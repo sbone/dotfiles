@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'dracula/vim'
 Plug 'vim-airline/vim-airline'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -29,7 +29,6 @@ set softtabstop=2         " deleting tab spaces consistently
 set expandtab             " tab in insert mode uses spaces
 
 " ctrlp: https://github.com/kien/ctrlp.vim
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_max_files = 0
