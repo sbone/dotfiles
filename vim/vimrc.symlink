@@ -10,14 +10,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-haml'
 Plug 'tpope/vim-surround'
 
-Plug 'tpope/vim-rails'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'kchmck/vim-coffee-script'
-Plug 'elmcast/elm-vim'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
