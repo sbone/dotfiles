@@ -29,6 +29,7 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_max_files = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*.gif,*.woff,*.ttf,*.dump,*/node_modules/*,*.scssc
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_working_path_mode = 0
 
 " color settings
 set background=dark
