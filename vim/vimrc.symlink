@@ -7,6 +7,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'dracula/vim'
 Plug 'vim-airline/vim-airline'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'css', 'scss', 'sass', 'json', 'markdown'] }
+
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
