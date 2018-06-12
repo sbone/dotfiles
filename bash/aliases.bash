@@ -13,13 +13,10 @@ alias cleanup="find . -name '*.DS_Store' -type f -delete"
 
 # instant simple server
 # https://gist.github.com/1525217
-alias server="open http://localhost:8000 && python -m SimpleHTTPServer"
+alias server="python -m SimpleHTTPServer && open http://localhost:8000"
 
 # git grep
 alias gg="git grep"
-
-# global agignore
-alias ag="ag --path-to-agignore=~/.agignore"
 
 # kill process(es) on certain port
 killPortProcess() {
