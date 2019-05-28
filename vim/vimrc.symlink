@@ -29,11 +29,17 @@ set shiftwidth=2          " of columns used when using << or >>
 set expandtab             " tab in insert mode uses spaces
 
 " ctrlp: https://github.com/kien/ctrlp.vim
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('rg')
+  set grepprg=rg\ --color=never
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+  let g_ctrlp_use_caaching = 0
+endif
+let g:ctrlp_lazy_update = 1
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_max_files = 0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*.gif,*.woff,*.ttf,*.dump,*/node_modules/*,*.scssc
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_working_path_mode = 0
 
 " color settings
