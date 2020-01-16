@@ -16,9 +16,6 @@ alias cleanup="find . -name '*.DS_Store' -type f -delete"
 # https://gist.github.com/1525217
 alias server="python -m SimpleHTTPServer && open http://localhost:8000"
 
-# git grep
-alias gg="git grep"
-
 # kill process(es) on certain port
 killPortProcess() {
   kill `lsof -t -i:$1`
