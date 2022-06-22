@@ -1,6 +1,6 @@
 [core]
     quotepath = false
-    editor = /usr/local/bin/vim
+    editor = /usr/bin/vim
     excludesfile = ~/.gitignore
     pager = diff-so-fancy | less --tabs=1,5 -R
 [user]
