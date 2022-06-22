@@ -44,7 +44,6 @@ let g:ctrlp_working_path_mode = 0
 
 " color settings
 set background=dark
-color dracula
 
 let mapleader=","       " remap leader key
 set nocompatible
