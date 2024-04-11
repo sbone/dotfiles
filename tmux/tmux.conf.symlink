@@ -19,7 +19,7 @@ bind C-a send-prefix
 
 # Easier window splitting
 unbind %
-bind \ split-window -h
+bind '\' split-window -h
 bind - split-window -v
 
 # Pane movement
@@ -36,3 +36,6 @@ bind L resize-pane -R 5
 
 # Mouse Support
 set-option -g mouse on
+
+# Use local shell
+set-option -g default-shell $SHELL
