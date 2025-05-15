@@ -38,4 +38,5 @@ bind L resize-pane -R 5
 set-option -g mouse on
 
 # Use local shell
-set-option -g default-shell $SHELL
+set-option -g default-shell /bin/zsh
+set-option -g default-command "/bin/zsh -il"

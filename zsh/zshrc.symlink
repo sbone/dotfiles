@@ -1,9 +1,8 @@
 autoload -U colors && colors
 
-export PATH=$PATH:/Users/stevenbone/.drv/bin
-
-export PATH="/opt/homebrew/bin:$HOME/.rbenv/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 eval $(/opt/homebrew/bin/brew shellenv)
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 # Load version control information
 autoload -Uz vcs_info
@@ -16,9 +15,17 @@ zstyle ':vcs_info:git:*' formats '%F{yellow}[%b]%f'
 setopt PROMPT_SUBST
 PROMPT='%F{blue}${PWD/#$HOME/~}%f ${vcs_info_msg_0_} > '
 
-alias ls="ls -lah"
-
-if [ -f ~/.zshrc_local ]; then
-    source ~/.zshrc_local
+# Ensure emacs keybindings and ctrl-r; just to get ctrl-r search in tmux!
+if [[ -o interactive ]]; then
+  bindkey -e
+  autoload -Uz history-incremental-search-backward
+  bindkey '^R' history-incremental-search-backward
 fi
 
+alias ls="ls -lah"
+
+export EDITOR=vim
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+ulimit -n 10240
+
+[[ -f ~/.zshrc_local ]] && source ~/.zshrc_local
