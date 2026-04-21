@@ -1,11 +1,17 @@
 # Colors
 set -g default-terminal "screen-256color"
 
+# Copy selections to the outer terminal clipboard over SSH when supported.
+set -g set-clipboard on
+set -as terminal-overrides ',*:Ms=\E]52;c;%p2%s\7'
+
 # Shorten input delay
-set -sg escape-time 0
+set -sg escape-time 10
 
 # Start window numbering at 1 instead of 0
 set -g base-index 1
+set -g pane-base-index 1
+set -g renumber-windows on
 
 # Reload tmux.conf easily
 bind r source-file ~/.tmux.conf \; display "tmux.conf reloaded"
@@ -19,7 +25,7 @@ bind C-a send-prefix
 
 # Easier window splitting
 unbind %
-bind \ split-window -h
+bind \\ split-window -h
 bind - split-window -v
 
 # Pane movement
@@ -36,3 +42,8 @@ bind L resize-pane -R 5
 
 # Mouse Support
 set-option -g mouse on
+
+# Mouse and keyboard copy mode
+setw -g mode-keys vi
+bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-selection-and-cancel
