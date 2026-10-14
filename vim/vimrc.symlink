@@ -1,127 +1,28 @@
-syntax on
-filetype plugin indent on
-
-" vim-plug
-call plug#begin('~/.vim/plugged')
-
-Plug 'dracula/vim'
-Plug 'vim-airline/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'css', 'scss', 'sass', 'json', 'markdown'] }
-
-
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-
-Plug 'sheerun/vim-polyglot'
-
-Plug 'w0rp/ale'
-
-call plug#end()
-
-set noswapfile
-
-set tabstop=2             " number of spaces used when tabbing
-set shiftwidth=2          " of columns used when using << or >>
-set expandtab             " tab in insert mode uses spaces
-
-" ctrlp: https://github.com/kien/ctrlp.vim
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
-if executable('rg')
-  set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g_ctrlp_use_caaching = 0
-endif
-let g:ctrlp_lazy_update = 1
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_max_files = 0
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.png,*.gif,*.woff,*.ttf,*.dump,*/node_modules/*,*.scssc
-let g:ctrlp_working_path_mode = 0
-
-" color settings
-set background=dark
-
-let mapleader=","       " remap leader key
 set nocompatible
-set encoding=utf-8
+syntax on
+filetype indent on
 
-" airline stuff
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
-
-let g:airline_powerline_fonts = 1
-set laststatus=2
-
-" Move around splits with <c-hjkl>
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
-" Fix delete not working in insert mode on empty lines
+" Two-space indentation
+set tabstop=2 shiftwidth=2 expandtab
+set autoindent
 set backspace=indent,eol,start
 
-set autoindent            " automatic indent new lines
-set smartindent           " be smart about it
-set nowrap                " do not wrap lines
-" set ruler                 " show the cursor position at all times
-set number                " show line numbers
-set ch=1                  " set command area height
-set whichwrap+=<,>,h,l,[,]  " backspace and cursor keys wrap lines
-set scrolloff=8           " keep 8 lines above and below cursor
+" Display
+set background=dark
+set number cursorline
+set nowrap
+set scrolloff=8
+set showmatch
 
-set showmatch             " bracket/brace highlighting
-set hlsearch              " highlight searches
+" Search as you type; match case only when the query has capitals
+set incsearch nohlsearch
+set ignorecase smartcase
 
-set lazyredraw            " turn off lazy redraw
-set ttyfast               " always assume a fast connection
+" Move around splits with Ctrl-h/j/k/l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
-" toggle paste mode
-set pastetoggle=<leader>p
-
-" Don’t keep results highlighted after searching...
-set nohlsearch
-
-" ...just highlight as we type
-set incsearch
-
-" Ignore case when searching...
-set ignorecase
-
-" ...except if we input a capital letter
-set smartcase
-
-" Highlight current line
-set cursorline
-
-" Indent if we're at the beginning of a line. Else, do completion.
-" (from Destroy All Software)
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-      return "\<tab>"
-  else
-      return "\<c-p>"
-  endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
-
-" automatically remove whitespace when saving file
-autocmd BufWritePre * :%s/\s\+$//e
-
-" Disable ex mode
-nnoremap Q <nop>
-
-" ALE navigation
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_enter = 0
+" Avoid entering Ex mode accidentally
+nnoremap Q <Nop>
