@@ -1,7 +1,7 @@
 autoload -U colors && colors
 
 export PATH="/opt/homebrew/bin:$PATH"
-eval $(/opt/homebrew/bin/brew shellenv)
+eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 # Load version control information
@@ -18,14 +18,13 @@ PROMPT='%F{blue}${PWD/#$HOME/~}%f ${vcs_info_msg_0_} > '
 # Ensure emacs keybindings and ctrl-r; just to get ctrl-r search in tmux!
 if [[ -o interactive ]]; then
   bindkey -e
-  autoload -Uz history-incremental-search-backward
   bindkey '^R' history-incremental-search-backward
 fi
 
 alias ls="ls -lah"
 
 export EDITOR=vim
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 ulimit -n 10240
 
 [[ -f ~/.zshrc_local ]] && source ~/.zshrc_local

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Slide modification of Gary Bernhardt's .githelpers
+# Slight modification of Gary Bernhardt's .githelpers
 # https://github.com/garybernhardt/dotfiles/blob/master/.githelpers
 #
 # Log output:
@@ -30,7 +30,7 @@ show_git_head() {
 }
 
 pretty_git_log() {
-	git log --graph --pretty="tformat:${FORMAT}" $* |
+	git log --graph --pretty="tformat:${FORMAT}" "$@" |
 		# Replace (2 years ago) with (2 years)
 		sed -Ee 's/(^[^<]*) ago\)/\1)/' |
 		# Replace (2 years, 5 months) with (2 years)
@@ -40,4 +40,3 @@ pretty_git_log() {
 		# Page only if we need to
 		less -FXRS
 }
-

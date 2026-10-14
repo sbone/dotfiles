@@ -24,7 +24,6 @@ ln -s $HOME/.dotfiles/tmux/tmux.conf.symlink $HOME/.tmux.conf
 
 echo "Symlinking vim..."
 ln -s $HOME/.dotfiles/vim/vimrc.symlink $HOME/.vimrc
-ln -s $HOME/.dotfiles/vim/vim.symlink $HOME/.vim
 
 echo "Symlinking git..."
 ln -s $HOME/.dotfiles/git/gitconfig.symlink $HOME/.gitconfig
